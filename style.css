@@ -1,0 +1,273 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #333333;
+  --secondary-color: #666666;
+  --light-gray: #dddddd;
+  --very-light-gray: #f8f8f8;
+}
+
+body {
+  font-family: 'Sarabun', sans-serif;
+  background-color: #f5f5f5;
+  color: var(--primary-color);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.receipt-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.receipt {
+  background: white;
+  width: 100%;
+  max-width: 794px; /* A4 width */
+  min-height: 1123px; /* A4 height */
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  text-align: center;
+}
+
+.header-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  text-align: center;
+}
+
+.header-right {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  text-align: right;
+}
+
+.emblem-placeholder {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+  background-color: var(--very-light-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.emblem-placeholder:after {
+  content: "ครุฑ";
+  font-size: 12px;
+  color: var(--secondary-color);
+}
+
+.department-name {
+  font-size: 14px;
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.form-group {
+  display: flex;
+  margin-bottom: 15px;
+  align-items: flex-end;
+}
+
+.form-label {
+  flex: 0 0 180px;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+.form-value {
+  flex: 1;
+  border-bottom: 1px solid var(--light-gray);
+  height: 25px;
+  display: flex;
+  align-items: center;
+  min-width: 100px;
+  font-size: 14px;
+  padding: 2px 0;
+}
+
+[contenteditable]:focus {
+  outline: 1px solid #cce5ff;
+  background-color: #f8f9fa;
+}
+
+.column-layout {
+  display: flex;
+  justify-content: space-between;
+}
+
+.column {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.column:last-child {
+  margin-right: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+table, th, td {
+  border: 1px solid var(--light-gray);
+}
+
+th {
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  background-color: var(--very-light-gray);
+  font-size: 14px;
+}
+
+td {
+  padding: 10px;
+  text-align: left;
+  font-size: 14px;
+}
+
+td.right-align {
+  text-align: right;
+}
+
+.total {
+  text-align: center;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.1;
+  width: 300px;
+  height: 300px;
+  background-color: var(--very-light-gray);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 50%;
+}
+
+.footer {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-left, .footer-right {
+  text-align: center;
+  flex: 1;
+}
+
+.signature {
+  margin-bottom: 15px;
+  height: 60px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.signature-placeholder {
+  width: 150px;
+  height: 50px;
+  border-bottom: 1px solid var(--light-gray);
+  position: relative;
+}
+
+.stamp {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.tiny-text {
+  font-size: 10px;
+  margin-top: 30px;
+  color: var(--secondary-color);
+}
+
+/* Print button */
+.print-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  background-color: #333333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Sarabun', sans-serif;
+  font-size: 14px;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.print-button:hover {
+  background-color: #555555;
+}
+
+/* Media query for print */
+@media print {
+  body {
+    background: none;
+    padding: 0;
+  }
+  
+  .receipt {
+    box-shadow: none;
+    padding: 15px;
+    width: 100%;
+    max-width: none;
+    min-height: auto;
+  }
+
+  .print-button {
+    display: none;
+  }
+}
